@@ -27,7 +27,7 @@ TEST(wayTooLongWords, test) {
     auto start = std::chrono::steady_clock::now();
 
     // Call the function
-    auto output = wayTooLongWords(input);
+    auto output = wayTooLongWords::wayTooLongWords(input);
 
     // End measuring the time spent by the function
     auto end = std::chrono::steady_clock::now();

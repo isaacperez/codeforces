@@ -5,7 +5,16 @@
 
 
 // https://codeforces.com/problemset/problem/4/A
-bool watermelon(int weight);
+namespace watermelon {
+	bool watermelon(int weight);
+}
 
 // https://codeforces.com/problemset/problem/71/A
-std::vector<std::string> wayTooLongWords(std::vector<std::string> inputs);
+namespace wayTooLongWords {
+	std::vector<std::string> wayTooLongWords(std::vector<std::string> inputs);
+}
+
+// https://codeforces.com/problemset/problem/231/A
+namespace team {
+	int team(std::vector<std::string> inputs);
+}

@@ -1,6 +1,6 @@
 #include "problems.h"
 
-bool watermelon(int weight)
+bool watermelon::watermelon(int weight)
 {
     // If the number is even and greather than 2, the watermelon can be split in
     // two even parts

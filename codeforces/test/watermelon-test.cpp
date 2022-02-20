@@ -27,7 +27,7 @@ TEST(watermelon, test) {
         auto start = std::chrono::steady_clock::now();
 
         // Call the function
-        bool result = watermelon(input_and_output.first);
+        bool result = watermelon::watermelon(input_and_output.first);
 
         // End measuring the time spent by the function
         auto end = std::chrono::steady_clock::now();

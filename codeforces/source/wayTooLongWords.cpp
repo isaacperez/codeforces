@@ -1,6 +1,6 @@
 #include "problems.h"
 
-std::vector<std::string> wayTooLongWords(std::vector<std::string> inputs) {
+std::vector<std::string> wayTooLongWords::wayTooLongWords(std::vector<std::string> inputs) {
 
 	std::vector<std::string> output;
 	for (auto& current_input : inputs) {
