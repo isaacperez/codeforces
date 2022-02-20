@@ -6,15 +6,15 @@
 
 // https://codeforces.com/problemset/problem/4/A
 namespace watermelon {
-	bool watermelon(int weight);
+	void watermelon(std::istream& input, std::ostream& output);
 }
 
 // https://codeforces.com/problemset/problem/71/A
 namespace wayTooLongWords {
-	std::vector<std::string> wayTooLongWords(std::vector<std::string> inputs);
+	void wayTooLongWords(std::istream& input, std::ostream& output);
 }
 
 // https://codeforces.com/problemset/problem/231/A
 namespace team {
-	int team(std::vector<std::string> inputs);
+	void team(std::istream& input, std::ostream& output);
 }

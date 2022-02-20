@@ -1,4 +1,5 @@
 #include "gtest/gtest.h"
+#include <iostream>
 #include <chrono>
 #include <utility>
 #include <vector>
@@ -9,19 +10,15 @@
 TEST(team, test1) {
 
     // Prepare the inputs and the expected output
-    std::vector<std::string> input = {
-        "1 1 0",
-        "1 1 1",
-        "1 0 0"
-    };
-
-    int expected_output = 2;
+    std::istringstream input("3\n1 1 0\n1 1 1\n1 0 0\n");
+    std::ostringstream output;
+    std::string expected_output = "2\n";  // The output always have a \n
 
     // Begin to measure the time spent by the function
     auto start = std::chrono::steady_clock::now();
 
     // Call the function
-    auto output = team::team(input);
+    team::team(input, output);
 
     // End measuring the time spent by the function
     auto end = std::chrono::steady_clock::now();
@@ -30,7 +27,7 @@ TEST(team, test1) {
     auto elapsed_microseconds = std::chrono::duration_cast<std::chrono::microseconds>(end - start).count();
 
     // Check the result
-    EXPECT_EQ(expected_output, output);
+    EXPECT_EQ(output.str(), expected_output);
 
     // Check the time
     EXPECT_LT(elapsed_microseconds, 1000000);
@@ -41,18 +38,15 @@ TEST(team, test1) {
 TEST(team, test2) {
 
     // Prepare the inputs and the expected output
-    std::vector<std::string> input = {
-        "1 0 0",
-        "0 1 1"
-    };
-
-    int expected_output = 1;
+    std::istringstream input("2\n1 0 0\n0 1 1\n");
+    std::ostringstream output;
+    std::string expected_output = "1\n";  // The output always have a \n
 
     // Begin to measure the time spent by the function
     auto start = std::chrono::steady_clock::now();
 
     // Call the function
-    auto output = team::team(input);
+    team::team(input, output);
 
     // End measuring the time spent by the function
     auto end = std::chrono::steady_clock::now();
@@ -61,9 +55,8 @@ TEST(team, test2) {
     auto elapsed_microseconds = std::chrono::duration_cast<std::chrono::microseconds>(end - start).count();
 
     // Check the result
-    EXPECT_EQ(expected_output, output);
+    EXPECT_EQ(output.str(), expected_output);
 
     // Check the time
     EXPECT_LT(elapsed_microseconds, 1000000);
-
 }

@@ -9,25 +9,30 @@
 TEST(watermelon, test) {
 
     // Prepare the inputs
-    std::vector<std::pair<int, bool>> inputs_and_outputs = {
-        {0, false},
-        {1, false},
-        {2, false},
-        {3, false},
-        {4, true},
-        {50, true},
-        {51, false},
-        {98, true},
-        {99, false}
+    std::vector<std::pair<std::string, std::string>> inputs_and_outputs = {
+        {"0\n", "NO\n"},
+        {"1\n", "NO\n"},
+        {"2\n", "NO\n"},
+        {"3\n", "NO\n"},
+        {"4\n", "YES\n"},
+        {"50\n", "YES\n"},
+        {"51\n", "NO\n"},
+        {"98\n", "YES\n"},
+        {"99\n", "NO\n"}
     };
 
     // Test all inputs
     for (auto& input_and_output : inputs_and_outputs) {
+        
+        // Build the current input
+        std::istringstream input(input_and_output.first);
+        std::ostringstream output;
+
         // Begin to measure the time spent by the function
         auto start = std::chrono::steady_clock::now();
 
         // Call the function
-        bool result = watermelon::watermelon(input_and_output.first);
+        watermelon::watermelon(input, output);
 
         // End measuring the time spent by the function
         auto end = std::chrono::steady_clock::now();
@@ -36,7 +41,7 @@ TEST(watermelon, test) {
         auto elapsed_microseconds = std::chrono::duration_cast<std::chrono::microseconds>(end - start).count();
 
         // Check the result
-        EXPECT_EQ(result, input_and_output.second);
+        EXPECT_EQ(output.str(), input_and_output.second);
 
         // Check the time
         EXPECT_LT(elapsed_microseconds, 1000000);
