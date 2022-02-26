@@ -2,7 +2,7 @@
 set(PROJECT_NAME codeforces)
 
 # Sources
-file(GLOB sources source/*.cpp)
+file(GLOB sources src/*.cpp)
 
 # Headers
 file(GLOB headers include/*.h)
