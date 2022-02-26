@@ -104,3 +104,38 @@ void Aproblems::helpfulMaths::helpfulMaths(std::istream& input, std::ostream& ou
 	// Send the output
 	output << outputString << std::endl;
 }
+
+
+void Aproblems::phoneNumbers::phoneNumbers(std::istream& input, std::ostream& output) {
+
+	// Get the number of phones from the first line
+	std::string inputLine;
+	std::getline(input, inputLine);
+	int numPhones = std::stoi(inputLine);
+
+	// Read the rest of lines
+	size_t idxSpace;
+	std::string name, numbers;
+	int sum;
+	for (int i = 0; i < numPhones; i++) {
+		std::getline(input, inputLine);
+
+		// Get the position of the space character in the line
+		idxSpace = inputLine.find(" ");
+
+		// Extract the name and the number
+		name = inputLine.substr(0, idxSpace);
+		numbers = inputLine.substr(idxSpace);
+
+		// Sum all numbers
+		sum = 0;
+		for (char& number : numbers) {
+			sum += number - '0';
+		}
+
+		// Check the result is even
+		if (sum % 2 == 0) {
+			output << name << std::endl;
+		}
+	}
+}

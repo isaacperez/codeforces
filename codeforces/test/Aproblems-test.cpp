@@ -221,7 +221,39 @@ TEST(helpfulMaths, test3) {
     auto start = std::chrono::steady_clock::now();
 
     // Call the function
-    Aproblems::helpfulMaths::helpfulMaths(input, output);
+    helpfulMaths(input, output);
+
+    // End measuring the time spent by the function
+    auto end = std::chrono::steady_clock::now();
+
+    // Get the measured time in microseconds
+    auto elapsed_microseconds = std::chrono::duration_cast<std::chrono::microseconds>(end - start).count();
+
+    // Check the result
+    EXPECT_EQ(output.str(), expected_output);
+
+    // Check the time
+    EXPECT_LT(elapsed_microseconds, microsecondsLimit);
+}
+
+
+
+TEST(phoneNumbers, test1) {
+
+    // Set the namespace for the current test
+    using namespace Aproblems::phoneNumbers;
+
+    // Prepare the inputs and the expected output
+    std::istringstream input(
+        "5\nJett 012345678\nViper 111111111\nNeon 987654321\nRaze 512610294\nReyna 192830492\n");
+    std::ostringstream output;
+    std::string expected_output = "Jett\nRaze\nReyna\n";  // The output always have a \n
+
+    // Begin to measure the time spent by the function
+    auto start = std::chrono::steady_clock::now();
+
+    // Call the function
+    phoneNumbers(input, output);
 
     // End measuring the time spent by the function
     auto end = std::chrono::steady_clock::now();

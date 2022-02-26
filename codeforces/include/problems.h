@@ -28,4 +28,11 @@ namespace Aproblems {
 		void helpfulMaths(std::istream& input, std::ostream& output);
 		const unsigned int microsecondsLimit = 2000000;
 	}
+	
+	// https://codeforces.com/gym/103562/problem/A
+	namespace phoneNumbers {
+		void phoneNumbers(std::istream& input, std::ostream& output);
+		const unsigned int microsecondsLimit = 1000000;
+	}
+
 }
