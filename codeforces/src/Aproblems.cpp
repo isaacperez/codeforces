@@ -1,6 +1,7 @@
 #include "problems.h"
 #include <iostream>
 #include <algorithm>
+#include <map>
 
 
 void Aproblems::watermelon::watermelon(std::istream& input, std::ostream& output)
@@ -68,4 +69,38 @@ void Aproblems::team::team(std::istream& input, std::ostream& output)
 
 	// Show the result
 	output << num_problems_will_be_solved << std::endl;
+}
+
+
+void Aproblems::helpfulMaths::helpfulMaths(std::istream& input, std::ostream& output)
+{
+	// Read the inputs and save then in the right position
+	std::map<char, int> operands { {'+', 0},  {'1', 0},  {'2', 0},  {'3', 0}, };
+
+	std::string inputLine;
+	std::getline(input, inputLine);
+
+	for (char& character : inputLine) {
+		operands[character]++;
+	}
+
+	// Build the output
+	std::string outputString = "";
+	for (int i = 0; i < operands['1']; i++) {
+		outputString += "1+";
+	}
+
+	for (int i = 0; i < operands['2']; i++) {
+		outputString += "2+";
+	}
+
+	for (int i = 0; i < operands['3']; i++) {
+		outputString += "3+";
+	}
+	
+	// Remove last "+"
+	outputString = outputString.substr(0, outputString.size() - 1);
+
+	// Send the output
+	output << outputString << std::endl;
 }

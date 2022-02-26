@@ -9,6 +9,9 @@
 
 TEST(watermelon, test) {
 
+    // Set the namespace for the current test
+    using namespace Aproblems::watermelon;
+
     // Prepare the inputs
     std::vector<std::pair<std::string, std::string>> inputs_and_outputs = {
         {"0\n", "NO\n"},
@@ -33,7 +36,7 @@ TEST(watermelon, test) {
         auto start = std::chrono::steady_clock::now();
 
         // Call the function
-        Aproblems::watermelon::watermelon(input, output);
+        watermelon(input, output);
 
         // End measuring the time spent by the function
         auto end = std::chrono::steady_clock::now();
@@ -45,12 +48,15 @@ TEST(watermelon, test) {
         EXPECT_EQ(output.str(), input_and_output.second);
 
         // Check the time
-        EXPECT_LT(elapsed_microseconds, 1000000);
+        EXPECT_LT(elapsed_microseconds, microsecondsLimit);
     }
 }
 
 
 TEST(wayTooLongWords, test) {
+
+    // Set the namespace for the current test
+    using namespace Aproblems::wayTooLongWords;
 
     // Prepare the inputs and the expected output
     std::istringstream input(
@@ -62,7 +68,7 @@ TEST(wayTooLongWords, test) {
     auto start = std::chrono::steady_clock::now();
 
     // Call the function
-    Aproblems::wayTooLongWords::wayTooLongWords(input, output);
+    wayTooLongWords(input, output);
 
     // End measuring the time spent by the function
     auto end = std::chrono::steady_clock::now();
@@ -74,11 +80,14 @@ TEST(wayTooLongWords, test) {
     EXPECT_EQ(expected_output, output.str());
 
     // Check the time
-    EXPECT_LT(elapsed_microseconds, 1000000);
+    EXPECT_LT(elapsed_microseconds, microsecondsLimit);
 }
 
 
 TEST(team, test1) {
+
+    // Set the namespace for the current test
+    using namespace Aproblems::team;
 
     // Prepare the inputs and the expected output
     std::istringstream input("3\n1 1 0\n1 1 1\n1 0 0\n");
@@ -89,7 +98,7 @@ TEST(team, test1) {
     auto start = std::chrono::steady_clock::now();
 
     // Call the function
-    Aproblems::team::team(input, output);
+    team(input, output);
 
     // End measuring the time spent by the function
     auto end = std::chrono::steady_clock::now();
@@ -101,12 +110,15 @@ TEST(team, test1) {
     EXPECT_EQ(output.str(), expected_output);
 
     // Check the time
-    EXPECT_LT(elapsed_microseconds, 1000000);
+    EXPECT_LT(elapsed_microseconds, microsecondsLimit);
 
 }
 
 
 TEST(team, test2) {
+
+    // Set the namespace for the current test
+    using namespace Aproblems::team;
 
     // Prepare the inputs and the expected output
     std::istringstream input("2\n1 0 0\n0 1 1\n");
@@ -117,7 +129,7 @@ TEST(team, test2) {
     auto start = std::chrono::steady_clock::now();
 
     // Call the function
-    Aproblems::team::team(input, output);
+    team(input, output);
 
     // End measuring the time spent by the function
     auto end = std::chrono::steady_clock::now();
@@ -129,5 +141,97 @@ TEST(team, test2) {
     EXPECT_EQ(output.str(), expected_output);
 
     // Check the time
-    EXPECT_LT(elapsed_microseconds, 1000000);
+    EXPECT_LT(elapsed_microseconds, microsecondsLimit);
+}
+
+
+TEST(helpfulMaths, test1) {
+
+    // Set the namespace for the current test
+    using namespace Aproblems::helpfulMaths;
+
+    // Prepare the inputs and the expected output
+    std::istringstream input("3+2+1\n");
+    std::ostringstream output;
+    std::string expected_output = "1+2+3\n";  // The output always have a \n
+
+    // Begin to measure the time spent by the function
+    auto start = std::chrono::steady_clock::now();
+
+    // Call the function
+    helpfulMaths(input, output);
+
+    // End measuring the time spent by the function
+    auto end = std::chrono::steady_clock::now();
+
+    // Get the measured time in microseconds
+    auto elapsed_microseconds = std::chrono::duration_cast<std::chrono::microseconds>(end - start).count();
+
+    // Check the result
+    EXPECT_EQ(output.str(), expected_output);
+
+    // Check the time
+    EXPECT_LT(elapsed_microseconds, microsecondsLimit);
+}
+
+
+
+TEST(helpfulMaths, test2) {
+
+    // Set the namespace for the current test
+    using namespace Aproblems::helpfulMaths;
+
+    // Prepare the inputs and the expected output
+    std::istringstream input("1+1+3+1+3\n");
+    std::ostringstream output;
+    std::string expected_output = "1+1+1+3+3\n";  // The output always have a \n
+
+    // Begin to measure the time spent by the function
+    auto start = std::chrono::steady_clock::now();
+
+    // Call the function
+    helpfulMaths(input, output);
+
+    // End measuring the time spent by the function
+    auto end = std::chrono::steady_clock::now();
+
+    // Get the measured time in microseconds
+    auto elapsed_microseconds = std::chrono::duration_cast<std::chrono::microseconds>(end - start).count();
+
+    // Check the result
+    EXPECT_EQ(output.str(), expected_output);
+
+    // Check the time
+    EXPECT_LT(elapsed_microseconds, microsecondsLimit);
+}
+
+
+
+TEST(helpfulMaths, test3) {
+
+    // Set the namespace for the current test
+    using namespace Aproblems::helpfulMaths;
+
+    // Prepare the inputs and the expected output
+    std::istringstream input("2\n");
+    std::ostringstream output;
+    std::string expected_output = "2\n";  // The output always have a \n
+
+    // Begin to measure the time spent by the function
+    auto start = std::chrono::steady_clock::now();
+
+    // Call the function
+    Aproblems::helpfulMaths::helpfulMaths(input, output);
+
+    // End measuring the time spent by the function
+    auto end = std::chrono::steady_clock::now();
+
+    // Get the measured time in microseconds
+    auto elapsed_microseconds = std::chrono::duration_cast<std::chrono::microseconds>(end - start).count();
+
+    // Check the result
+    EXPECT_EQ(output.str(), expected_output);
+
+    // Check the time
+    EXPECT_LT(elapsed_microseconds, microsecondsLimit);
 }
